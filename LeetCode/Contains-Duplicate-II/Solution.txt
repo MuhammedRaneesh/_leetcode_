@@ -1,0 +1,32 @@
+1/**
+2 * @param {number[]} nums
+3 * @param {number} k
+4 * @return {boolean}
+5 */
+6var containsNearbyDuplicate = function(nums, k) {
+7
+8    // for(let i = 0 ; i < nums.length ; i++){
+9    //     for(let j = i+ 1 ; j < nums.length  ; j++){
+10    //         if(nums[i] == nums[j] && Math.abs(i-j) <= k){
+11    //             return true
+12    //         }
+13    //     }
+14    // }
+15    // return false 
+16
+17    let map = new Map()
+18
+19    for(let i = 0 ; i < nums.length ; i++){
+20
+21        if(map.has(nums[i])){
+22            let previousIndex = map.get(nums[i])
+23            if(Math.abs(i - previousIndex  ) <= k ){
+24                return true 
+25            }
+26        }
+27
+28        map.set(nums[i] , i)
+29    }
+30
+31    return false 
+32};  
